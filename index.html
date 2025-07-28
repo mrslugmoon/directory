@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slugmoon Domain Directory</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a clean look */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light gray background */
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+        <h1 class="text-4xl font-extrabold text-center text-gray-900 mb-8">Slugmoon Directory</h1>
+
+        <div id="domain-list" class="space-y-4">
+            <!-- Domains will be loaded here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Define your domains here.
+        // To add a new domain, simply add a new object to this array.
+        // Each object should have a 'name' and a 'url' property.
+        const domains = [
+            { name: "Slugmoon Dev", url: "https://dev.slugmoon.com" },
+            { name: "Slugmoon Bio", url: "https://slugmoon.com" },
+            { name: "Slugmoon Forum", url: "https://forum.slugmoon.com" }, // Added https:// for consistency
+            { name: "Slugmoon Mail", url: "https://mail.slugmoon.com" }   // Added https:// for consistency
+        ];
+
+        const domainListDiv = document.getElementById('domain-list');
+
+        // Function to render the domain list
+        function renderDomains() {
+            domainListDiv.innerHTML = ''; // Clear existing content
+            domains.forEach(domain => {
+                const linkElement = document.createElement('a');
+                linkElement.href = domain.url;
+                linkElement.target = "_blank"; // Open link in a new tab
+                linkElement.rel = "noopener noreferrer"; // Security best practice for target="_blank"
+                linkElement.className = "block bg-blue-100 hover:bg-blue-200 text-blue-800 font-semibold py-3 px-5 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 text-center shadow-md";
+                linkElement.textContent = domain.name;
+                domainListDiv.appendChild(linkElement);
+            });
+        }
+
+        // Render domains when the page loads
+        document.addEventListener('DOMContentLoaded', renderDomains);
+
+        // Optional: If you want to dynamically add domains later without reloading the page,
+        // you would push to the 'domains' array and then call renderDomains() again.
+        // Example:
+        // domains.push({ name: "New Domain", url: "https://newdomain.com" });
+        // renderDomains();
+    </script>
+</body>
+</html>
